@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { hashHistory, IndexRoute, Route, Router } from 'react-router';
 
 import App from './components/App';
+import LoginForm from './components/LoginForm';
 
 const client = new ApolloClient({
   dataIdFromObject: obj => obj.id,
@@ -21,6 +22,7 @@ const Root = () => {
     <ApolloProvider client={client}>
       <Router history={hashHistory}>
         <Route path="/" component={App}>
+          <Route path="/login" component={LoginForm} />
         </Route>
       </Router>
     </ApolloProvider>
