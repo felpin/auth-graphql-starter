@@ -11,16 +11,16 @@ class AuthForm extends Component {
       <div className="row">
         <form className="col s6">
           <div className="input-field">
-            <label>e-mail</label>
             <input
+              placeholder="e-mail"
               value={this.state.email}
               onChange={e => this.setState({ email: e.target.value })}
             />
           </div>
           <div className="input-field">
-            <label>password</label>
             <input
               type="password"
+              placeholder="password"
               value={this.state.password}
               onChange={e => this.setState({ password: e.target.value })}
             />
