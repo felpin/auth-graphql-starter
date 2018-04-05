@@ -1,11 +1,20 @@
+import ApolloClient from 'apollo-client';
 import React from 'react';
+import { ApolloProvider } from 'react-apollo';
 import ReactDOM from 'react-dom';
+
+const client = new ApolloClient({
+  dataIdFromObject: obj => obj.id,
+});
 
 const Root = () => {
   return (
-    <div>
-      Auth Starter
-    </div>
+    <ApolloProvider client={client}>
+      <div>
+        Auth Starter
+      </div>
+    </ApolloProvider>
+
   );
 };
 
