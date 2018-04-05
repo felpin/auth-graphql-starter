@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { Link } from 'react-router';
 
+import LogoutMutation from '../mutations/Logout';
 import CurrentUserQuery from '../queries/CurrentUser';
 
 class Header extends Component {
+  onLogoutClick() {
+    this.props.mutate({
+      refetchQueries: [{ query: CurrentUserQuery }],
+    });
+  }
+
   renderButtons() {
     const { loading, user } = this.props.data;
 
@@ -13,7 +20,13 @@ class Header extends Component {
     }
 
     if (user) {
-      return <div>logout</div>;
+      return (
+        <li>
+          <a onClick={this.onLogoutClick.bind(this)}>
+            Logout
+          </a>
+        </li>
+      );
     }
 
     return (
@@ -40,4 +53,6 @@ class Header extends Component {
   }
 }
 
-export default graphql(CurrentUserQuery)(Header);
+export default graphql(LogoutMutation)(
+  graphql(CurrentUserQuery)(Header)
+);
